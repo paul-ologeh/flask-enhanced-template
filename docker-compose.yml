@@ -1,0 +1,23 @@
+version: "3"
+
+volumes:
+  postgres: {}
+  flask: {}
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    env_file: .env
+    ports:
+      - "8001:5432"
+    volumes:
+      - ${HOME}/postgres-data/:/var/lib/postgresql/data
+
+  flask:
+    build: .
+    container_name: flask
+    depends_on:
+      - postgres
+    env_file: .env
+    volumes: [".:/app"]
