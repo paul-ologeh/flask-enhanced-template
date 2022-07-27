@@ -9,7 +9,7 @@ from app import creat_app, db
 
 load_dotenv()
 
-LOG_LEVEL = os.environ.get("LOG_LEVEL", 20)
+LOG_LEVEL = int(os.environ.get("LOG_LEVEL", 20))
 
 logging.basicConfig(
     filename=os.environ.get("LOG_FILE_NAME", "flask.log"),
