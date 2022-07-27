@@ -2,10 +2,10 @@ import os
 
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY = os.environ.get("SECRET_KEY")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_RECORD_QUERIES = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI')
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URI")
     DEBUG = os.environ.get("DEBUG", False)
 
     @staticmethod
@@ -20,10 +20,7 @@ class DevelopmentConfig(Config):
 
 class TestConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URI')
+    SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URI")
 
 
-config = {
-    "DEVELOPMENT": DevelopmentConfig,
-    "TESTING": TestConfig
-}
+config = {"DEVELOPMENT": DevelopmentConfig, "TESTING": TestConfig}

@@ -1,1 +1,1 @@
-__all__ = "health"
+from .health import *

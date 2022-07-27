@@ -8,4 +8,5 @@ class Health(db.Model):
     __tablename__ = "health_checks"
     id = db.Column(UUID(as_uuid=True), default=uuid.uuid4, primary_key=True)
     message = db.Column(db.Text(), default="Ok")
+    api_version = db.Column(db.Integer(), nullable=False)
     timestamp = db.Column(db.DateTime(), default=datetime.utcnow)

@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from flask_migrate import Migrate
 
 from app import creat_app, db
+from app.models import *
 
 load_dotenv()
 
@@ -16,7 +17,7 @@ logging.basicConfig(
     level=LOG_LEVEL,
     format="%(asctime)s - [%(container_id)s] [%(levelname)s] %(name)s "
     "[%(module)s.%(funcName)s:%(lineno)d]: %(message)s",
-    datefmt="%Y%m%d-%H-:%M:%S"
+    datefmt="%Y%m%d-%H-:%M:%S",
 )
 
 old_factory = logging.getLogRecordFactory()
@@ -40,8 +41,20 @@ migrate = Migrate(app, db)
 
 for logger in (
     app.logger,
-    logging.getLogger('sqlalchemy'),
-    logging.getLogger('werkzeug'),
-    logging.getLogger('flask_cors'),
+    logging.getLogger("sqlalchemy"),
+    logging.getLogger("werkzeug"),
+    logging.getLogger("flask_cors"),
 ):
     logger.setLevel(LOG_LEVEL)
+
+
+@app.cli.command("setup-database")
+def setup_db():
+    try:
+        db.drop_all()
+        print("Setting up database...")
+        db.create_all()
+        print("Database setup successfully")
+    except Exception as e:
+        print("Failed to setup database")
+        print(str(e))
