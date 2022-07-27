@@ -5,7 +5,6 @@ class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_RECORD_QUERIES = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URI")
     DEBUG = os.environ.get("DEBUG", False)
 
     @staticmethod
@@ -16,6 +15,7 @@ class Config:
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     CORS_HEADERS = "Content-Type"
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URI")
 
 
 class TestConfig(Config):

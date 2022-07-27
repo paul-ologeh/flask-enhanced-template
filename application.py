@@ -5,7 +5,7 @@ import socket
 from dotenv import load_dotenv
 from flask_migrate import Migrate
 
-from app import creat_app, db
+from app import create_app, db
 from app.models import *
 
 load_dotenv()
@@ -35,7 +35,7 @@ logging.setLogRecordFactory(record_factory)
 werkzeug_logger = logging.getLogger("werkzeug")
 werkzeug_logger.level = LOG_LEVEL
 
-app = creat_app(os.getenv("ENVIRONMENT", "DEVELOPMENT"))
+app = create_app(os.getenv("ENVIRONMENT", "DEVELOPMENT"))
 migrate = Migrate(app, db)
 
 
