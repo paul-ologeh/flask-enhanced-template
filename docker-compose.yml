@@ -9,6 +9,7 @@ services:
     image: postgres
     container_name: postgres
     env_file: .env
+    user: "${UID}:${GID}"
     ports:
       - "8001:5432"
     volumes:
