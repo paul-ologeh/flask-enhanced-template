@@ -35,6 +35,11 @@ RUN apk add --no-cache libffi libpq
 COPY --from=builder /venv /venv
 ENV PATH="/venv/bin:$PATH"
 
+# Debugging: List contents of the current directory
+RUN ls -al
+
 # Create and switch to a new user
 RUN adduser -D -h /home/flask flask
 USER flask
+
+CMD ["gunicorn", "application:app",  "--config=gunicorn.config.py"]

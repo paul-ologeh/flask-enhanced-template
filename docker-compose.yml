@@ -17,7 +17,6 @@ services:
   flask:
     build: .
     image: flask_app
-    command: gunicorn "application:app" --config=gunicorn.config.py
     container_name: flask
     restart: always
     depends_on:
