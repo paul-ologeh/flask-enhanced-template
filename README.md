@@ -21,7 +21,7 @@ flask setup-database
 Create the test database inside the postgres container
 
 ```commandline
-docker exec -it <container-id> /bin/bash
+docker exec -it <container-id> sh 
 psql -U postgres
 CREATE DATABASE "flask-enhanced-test";
 ```
