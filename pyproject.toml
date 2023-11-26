@@ -24,6 +24,14 @@ mypy = "*"
 yamllint = "*"
 #mkdocs = "*" #documentation software
 
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+    "integration",
+]
+log_cli = true
+log_cli_level = "INFO"
+
 [tool.black]
 experimental-string-processing = true
 line-length = 88
