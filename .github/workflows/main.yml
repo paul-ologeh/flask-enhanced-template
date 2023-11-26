@@ -1,5 +1,5 @@
 name: Main
-run-name: ${{ github.actor }} is running the pipeline 🚀
+run-name: ${{ github.actor }} is running the main pipeline 🚀
 on: [push]
 jobs:
   build-and-test:
@@ -23,14 +23,19 @@ jobs:
     steps:
       - name: Checkout latest code
         uses: actions/checkout@v4
+
       - name: Install poetry
         run: pipx install poetry
-      - uses: actions/setup-python@v4
+
+      - name: Setup up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: 3.12
           cache: 'poetry'
+
       - name: Install dependencies
         run: poetry install
+
       - name: Run tests
         run: poetry run pytest
         env:
