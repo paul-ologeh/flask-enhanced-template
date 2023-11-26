@@ -3,7 +3,7 @@ import os
 from flask_migrate import Migrate
 
 from app import create_app, db
-from app.models import *
+from app.models import *  # noqa
 
 app = create_app(os.getenv("ENVIRONMENT", "DEVELOPMENT"))
 migrate = Migrate(app, db)

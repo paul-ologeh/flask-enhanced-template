@@ -1,12 +1,12 @@
 """health check model
 
 Revision ID: d08343f7529e
-Revises: 
+Revises:
 Create Date: 2022-07-27 18:19:00.921094
 
 """
-from alembic import op
 import sqlalchemy as sa
+from alembic import op
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.

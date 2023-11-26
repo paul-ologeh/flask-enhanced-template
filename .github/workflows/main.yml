@@ -21,21 +21,20 @@ jobs:
           --health-retries 5
 
     steps:
-    - name: Checkout latest code
-      uses: actions/checkout@v4
-    - name: Install poetry
-      run: pipx install poetry
-    - uses: actions/setup-python@v4
-      with:
-        python-version: '3.12'
-        cache: 'poetry'
-    - name: Install dependencies
-      run: poetry install
-    - name: Run tests
-      run: poetry run pytest
-      env:
+      - name: Checkout latest code
+        uses: actions/checkout@v4
+      - name: Install poetry
+        run: pipx install poetry
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+          cache: 'poetry'
+      - name: Install dependencies
+        run: poetry install
+      - name: Run tests
+        run: poetry run pytest
+        env:
           ENVIRONMENT: TESTING
           FLASK_APP: application.py
           TEST_DATABASE_URI: postgresql://postgres:password@localhost/flask-enhanced-test
           POETRY_VERSION: 1.6.1
-

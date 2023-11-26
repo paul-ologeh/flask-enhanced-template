@@ -1,6 +1,7 @@
 from flask import Blueprint
-from app.models import Health
+
 from app import db
+from app.models import Health
 
 api_v1 = Blueprint("v1", __name__, url_prefix="/v1")
 

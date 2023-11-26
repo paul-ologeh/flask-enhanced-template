@@ -1,10 +1,15 @@
 import uuid
 from datetime import datetime
-from app import db
+
+from flask_sqlalchemy.model import DefaultMeta
 from sqlalchemy.dialects.postgresql import UUID
 
+from app import db
 
-class Health(db.Model):
+BaseModel: DefaultMeta = db.Model
+
+
+class Health(BaseModel):
     __tablename__ = "health_checks"
     id = db.Column(UUID(as_uuid=True), default=uuid.uuid4, primary_key=True)
     message = db.Column(db.Text(), default="Ok")

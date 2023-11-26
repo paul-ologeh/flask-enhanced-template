@@ -16,6 +16,29 @@ flask-sqlalchemy = "^3.1.1"
 pytest = "^7.4.3"
 flask-cors = "^4.0.0"
 
+[tool.poetry.dev-dependencies]
+black = "*"
+isort = "*"
+flake8 = "*"
+mypy = "*"
+yamllint = "*"
+#mkdocs = "*" #documentation software
+
+[tool.black]
+experimental-string-processing = true
+line-length = 88
+
+[tool.isort]
+profile = "black"
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+tests = ["B201", "B301"]
+skips = ["B101", "B601"]
+
+[tool.mypy]
+ignore_missing_imports = true
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
